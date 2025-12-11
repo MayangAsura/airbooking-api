@@ -56,7 +56,7 @@ export const getHotels = async (req, res, next) => {
         // const hotels = {hotels: [{id: 1, name: 'hotels a'}]}
         const hotels = await Hotel.find({
             ...properties,
-            // cheaPestPrice: {$gt: min || 1, $lt: max || 999999999}
+            cheapestPrice: {$gt: min || 1, $lt: max || 999999999}
         }).limit(limit)
         console.log(hotels)
         res.status(200).json({error: false, message: 'Successfully get hotels', data: hotels})
