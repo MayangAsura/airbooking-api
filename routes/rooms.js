@@ -6,9 +6,9 @@ const router = express.Router()
 
 router.get('/', getRooms)
 router.get('/:id', getRoom)
-router.get('/availability/:id', updateAvailability)
-router.post('/hotels/:hid/rooms', verifyAdmin, createRoom)
-router.put('/:id', verifyAdmin, updateRoom)
+router.patch('/availability/:id', updateAvailability)
+router.post('/hotels/:hid', verifyAdmin, createRoom)
+router.patch('/:id', verifyAdmin, updateRoom)
 router.delete('/:id', verifyAdmin, deleteRoom)
 
 export default router

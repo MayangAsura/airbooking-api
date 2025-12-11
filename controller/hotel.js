@@ -27,7 +27,7 @@ export const getHotel = async (req, res, next) => {
         if(!hotel){
             res.status(400).json({error: false, message: 'Hotel not found'})
         }
-        res.status(200).json({error: false, message: 'Successfully get hotel', hotel})
+        res.status(200).json({error: false, message: 'Successfully get hotel', data: hotel})
         
     } catch (error) {
         console.log(error)

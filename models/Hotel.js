@@ -29,7 +29,7 @@ const HotelSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    photo: {
+    photos: {
         type: [String]
     },
     rating: {
