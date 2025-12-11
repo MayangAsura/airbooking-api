@@ -8,10 +8,10 @@ router.post('/create', createHotel)
 router.get('/', getHotels)
 router.get('/countByType', countByType)
 router.get('/countByCity', countByCity)
+router.get('/rooms/:id', getHotelRooms)
 router.patch('/update/:id', verifyAdmin, updateHotel)
 
 router.get('/:id', getHotel)
-router.get('/rooms/:id', getHotelRooms)
 
 router.delete('/delete/:id', verifyAdmin, deleteHotel)
 // router.post('/', (req, res) => {

@@ -56,7 +56,7 @@ export const getHotels = async (req, res, next) => {
         // const hotels = {hotels: [{id: 1, name: 'hotels a'}]}
         const hotels = await Hotel.find({
             ...properties,
-            cheapestPrice: {$gt: min || 1, $lt: max || 999999999}
+            cheapestPrice: {$gt: min | 1, $lt: max | 999999999}
         }).limit(limit)
         console.log(hotels)
         res.status(200).json({error: false, message: 'Successfully get hotels', data: hotels})
@@ -137,12 +137,12 @@ export const countByType = async (req, res, next) => {
 
 export const getHotelRooms = async (req, res, next) => {
     try {
-        const hotel = await Hotel.findById(req.param.id)
+        const hotel = await Hotel.findById(req.params.id)
         const list = await Promise.all(hotel.rooms.map(room =>{
             return Room.findById(room)
         }))
 
-        res.status(200).json(list)
+        res.status(200).json({error: false, message: 'update hotel successfully', data: list})
     } catch (error) {
         
     }

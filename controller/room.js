@@ -2,7 +2,7 @@ import Room from "../models/Room.js"
 import Hotel from "../models/Hotel.js"
 
 export const createRoom = async (req, res, next) => {
-    const hotelId = req.params.hotelId
+    const hotelId = req.params.hid
     const newRoom = new Room(req.body)
     try {
         const savedRoom = await newRoom.save()
@@ -10,6 +10,8 @@ export const createRoom = async (req, res, next) => {
             await Hotel.findByIdAndUpdate(hotelId, {
                 $push: {rooms: savedRoom._id}
             })
+
+            // const hotel = await Hotel.findById(hotelId)
         } catch (error) {
             next(error)
             
