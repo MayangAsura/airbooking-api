@@ -8,6 +8,7 @@ import authRoute from './routes/auth.js'
 import hotelRoute from './routes/hotels.js'
 import roomRoute from './routes/rooms.js'
 import userRoute from './routes/users.js'
+import { logger } from './core/Logger.js'
 
 const app = express()
 
@@ -64,5 +65,6 @@ app.use((err, req, res, next) => {
 
 
 app.listen(8080, () => {
-    console.log(`Server running on port 8080`)
+    logger.info(`Server is running on port 8080`),
+    console.log(`Server is running on port 8080`)
 })
