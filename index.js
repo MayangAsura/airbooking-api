@@ -41,12 +41,12 @@ mongoose.connection.on('connected', () =>{
 
 app.get('/',  (req, res) => {
     console.log('Hello there')
-    res.send('Hello from bookingapp')
+    res.send('AirBooking API')
 })
 
 
-app.use(express.json())
 app.use(cors())
+app.use(express.json())
 app.use(cookieParser())
 app.use('/api/auth', authRoute)
 app.use('/api/users', userRoute)
