@@ -9,6 +9,7 @@ import hotelRoute from './routes/hotels.js'
 import roomRoute from './routes/rooms.js'
 import userRoute from './routes/users.js'
 import { logger } from './core/Logger.js'
+import {corsOptions} from './config/corsOptions.js'
 
 const app = express()
 
@@ -39,6 +40,10 @@ mongoose.connection.on('connected', () =>{
 //     // res.send('I am on middleware')
 // })
 
+app.use(cors(corsOptions))
+app.use(express.json())
+app.use(cookieParser())
+
 app.use(function (req, res, next) {
     //Enabling CORS
     res.header("Access-Control-Allow-Origin", "*");
@@ -52,9 +57,7 @@ app.get('/',  (req, res) => {
     res.send('AirBooking API')
 })
 
-app.use(cors())
-app.use(express.json())
-app.use(cookieParser())
+
 app.use('/api/auth', authRoute)
 app.use('/api/users', userRoute)
 app.use('/api/hotels', hotelRoute)
