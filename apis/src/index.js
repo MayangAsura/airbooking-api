@@ -4,12 +4,12 @@ import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 
-import authRoute from './routes/auth.js'
-import hotelRoute from './routes/hotels.js'
-import roomRoute from './routes/rooms.js'
-import userRoute from './routes/users.js'
-import { logger } from './core/Logger.js'
-import {corsOptions} from './config/corsOptions.js'
+import authRoute from '../routes/auth.js'
+import hotelRoute from '../routes/hotels.js'
+import roomRoute from '../routes/rooms.js'
+import userRoute from '../routes/users.js'
+import { logger } from '../core/Logger.js'
+import {corsOptions} from '../config/corsOptions.js'
 
 const app = express()
 
