@@ -9,6 +9,7 @@ import hotelRoute from './routes/hotels.js'
 import roomRoute from './routes/rooms.js'
 import userRoute from './routes/users.js'
 import { logger } from './core/Logger.js'
+import { credentials } from './config/credentials.js'
 import {corsOptions} from './config/corsOptions.js'
 
 const app = express()
@@ -40,18 +41,24 @@ mongoose.connection.on('connected', () =>{
 //     // res.send('I am on middleware')
 // })
 
-// app.use(cors(corsOptions))
-app.use(cors())
-app.use(express.json())
-app.use(cookieParser())
-
+// const corsOptions = {
+//     origin: '', // Allow only requests from this origin
+//     methods: 'GET,POST', // Allow only these methods
+//     allowedHeaders: ['Content-Type', 'Authorization'] // Allow only these headers
+// }
+app.use(credentials)
+app.use(cors(corsOptions))
 // app.use(function (req, res, next) {
 //     //Enabling CORS
-//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Origin", corsOptions.origin);
 //     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
 //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
 //     next();
 // });
+// app.use(cors())
+app.use(express.json())
+app.use(cookieParser())
+
 
 app.get('/test',  (req, res) => {
     console.log('Hello there')
